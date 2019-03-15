@@ -55,11 +55,11 @@ class Maze:
 			num_row += 1
 					
 
-class Character(self):
+class Character:
 	"""Thanks to this class we'll create our character"""
 
-	def __init__(self, level)
-		pygame.image.load("pictures/mcgyver.png").convert_alpha()
+	def __init__(self, pict, level):
+		self.pict = pygame.image.load(pict).convert_alpha()
 		# That's the position of mc gyver (in sprites)
 		self.pos_x = 0
 		self.pos_y = 0
