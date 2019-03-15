@@ -55,5 +55,65 @@ class Maze:
 			num_row += 1
 					
 
+class Character(self):
+	"""Thanks to this class we'll create our character"""
+
+	def __init__(self, pict, level)
+		self.pict = pygame.image.load("pictures/mcgyver.png").convert_alpha()
+		# That's the position of mc gyver (in sprites)
+		self.pos_x = 0
+		self.pos_y = 0
+		# Position in pixels
+		self.x = 0
+		self.y = 0
+		# That's the level where the character is
+		self.level = level
+
+	def move_char(self, direction):
+		"""This method will calculate the new position of mc gyver, after each move"""
+		
+		# Move to right side
+		if direction == "right":
+			# We check if the move is possible (in the window)
+			if self.pos_x < (sprites_per_side - 1):
+				# We check if the move is possible (not a wall)
+				if self.level.maze[self.pos_y][self.pos_x + 1] != "W":
+					# New position of mc gyver, in sprites
+					self.pos_x += 1
+					# Real new position in pixels
+					self.x = self.pos_x * sprite_size
+
+		# Move to left side
+		if direction == "left":
+			# We check if the move is possible (in the window)
+			if self.pos_x > 0:
+				# We check if the move is possible (not a wall)
+				if self.level.maze[self.pos_y][self.pos_x - 1] != "W":
+					# New position of mc gyver, in sprites
+					self.pos_x -= 1
+					# Real new position in pixels
+					self.x = self.pos_x * sprite_size
+
+		# Move to the top side
+		if direction == "top":
+			# We check if the move is possible (in the window)
+			if self.pos_x > 0:
+				# We check if the move is possible (not a wall)
+				if self.level.maze[self.pos_y - 1][self.pos_x] != "W":
+					# New position of mc gyver, in sprites
+					self.pos_y -= 1
+					# Real new position in pixels
+					self.y = self.pos_y * sprite_size
+
+		# Move to the bottom side
+		if direction == "bottom":
+			# We check if the move is possible (in the window)
+			if self.pos_x < (sprites_per_side - 1):
+				# We check if the move is possible (not a wall)
+				if self.level.maze[self.pos_y + 1][self.pos_x] != "W":
+					# New position of mc gyver, in sprites
+					self.pos_y += 1
+					# Real new position in pixels
+					self.y = self.pos_y * sprite_size
 
 
