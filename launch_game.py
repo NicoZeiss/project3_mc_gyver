@@ -10,13 +10,15 @@ Don't forget to pick every item you will find
 
 import pygame
 from pygame.locals import *
+
 from classes import *
 from constants import *
 
 # We launch the game, and the main window
 pygame.init()
 window = pygame.display.set_mode((window_size, window_size))
-
+# Window title
+pygame.display.set_caption(window_title)
 
 # Main loop
 keep_open = 1
