@@ -48,9 +48,7 @@ while keep_open:
 				if event.key == K_SPACE:
 					keep_menu_open = 0
 
-	while keep_party_open:
-
-		# We launch the maze level
+	# We launch the maze level
 		background = pygame.image.load(background_pict).convert()
 		window.blit(background, (0,0))
 		maze = Maze("maze.txt")
@@ -62,6 +60,8 @@ while keep_open:
 		window.blit(mc_gyver.pict, (mc_gyver.x, mc_gyver.y))
 
 		pygame.time.Clock().tick(30)
+
+	while keep_party_open:
 
 		for event in pygame.event.get():
 
