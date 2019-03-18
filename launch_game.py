@@ -19,6 +19,9 @@ pygame.init()
 window = pygame.display.set_mode((window_size, window_size))
 # Window title
 pygame.display.set_caption(window_title)
+# Set an icon
+icon = pygame.image.load(mcgyver_pict)
+pygame.display.set_icon(icon)
 
 # Main loop
 keep_open = 1
