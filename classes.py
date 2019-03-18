@@ -91,15 +91,15 @@ class Character:
 					self.x = self.pos_x * sprite_size
 
 		# Move to the top side
-		if direction == "top":
-			if self.pos_x > 0:
+		if direction == "up":
+			if self.pos_y > 0:
 				if self.level.maze[self.pos_y - 1][self.pos_x] != "W":
 					self.pos_y -= 1
 					self.y = self.pos_y * sprite_size
 
 		# Move to the bottom side
-		if direction == "bottom":
-			if self.pos_x < (sprites_per_side - 1):
+		if direction == "down":
+			if self.pos_y < (sprites_per_side - 1):
 				if self.level.maze[self.pos_y + 1][self.pos_x] != "W":
 					self.pos_y += 1
 					self.y = self.pos_y * sprite_size
