@@ -56,14 +56,12 @@ while keep_open:
 
 	# We launch the maze level
 	background = pygame.image.load(background_pict).convert()
-	# window.blit(background, (0,0))
 	maze = Maze("maze.txt")
 	maze.generate_maze()
 	maze.show_maze(window)
 
 	# We launch our character
 	mc_gyver = Character("pictures/mcgyver.png", maze)
-	# window.blit(mc_gyver.pict, (mc_gyver.x, mc_gyver.y))
 
 	# Launch items in a dic
 	item_list = {}
