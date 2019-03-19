@@ -71,7 +71,7 @@ while keep_open:
 		item = Items(maze)
 		item.generate_item()
 		item.show_item(window)
-		item_list[i] = [item, True]
+		item_list[i] = [item, True]	
 
 	# Game loop
 	while keep_party_open:
@@ -99,21 +99,40 @@ while keep_open:
 				elif event.key == K_DOWN:
 					mc_gyver.move_char("down")
 
+		# Check if Mc Gyver collect an objet
 		for i in range(len(item_list)):
 			if mc_gyver.pos_x == item_list[i][0].pos_x:
 				if mc_gyver.pos_y == item_list[i][0].pos_y:
 					item_list[i][1] = False
 
+		# Raise meter count
+		count = 0
+		for i in range(len(item_list)):
+			if item_list[i][1] == False:
+				count += 1
+		meter_text = "{} / {} items collected".format(count, len(item_list))
+
 		# Display new position
 		window.blit(background,(0,0))
 		maze.show_maze(window)
 		window.blit(mc_gyver.pict, (mc_gyver.x, mc_gyver.y))
+
+		# Display meter
+		font = pygame.font.Font(None, 30)
+		meter = font.render(meter_text, 1, (255,255,255))
+		window.blit(meter, (470,10))
+
+		# Show item not yet collected
 		for i in range(len(item_list)):
 			if item_list[i][1] == True:
 				item_list[i][0].show_item(window)
+
+		# Refreshing window
 		pygame.display.flip()
 
+		# Win conditions
 		if maze.maze[mc_gyver.pos_x][mc_gyver.pos_y] == "M":
-			keep_party_open = 0
+			if count == len(item_list):
+				keep_party_open = 0
 
 #prob range avec première solution for pour supp items
