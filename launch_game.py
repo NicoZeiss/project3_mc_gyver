@@ -10,6 +10,7 @@ Don't forget to pick every item you will find
 
 import pygame
 from pygame.locals import *
+import random
 
 from classes import *
 from constants import *
@@ -64,6 +65,14 @@ while keep_open:
 	mc_gyver = Character("pictures/mcgyver.png", maze)
 	window.blit(mc_gyver.pict, (mc_gyver.x, mc_gyver.y))
 
+	# Launch items in a dic
+	item_list = {}
+	for i in range(4):
+		item = Items(maze)
+		item.generate_item()
+		item.show_item(window)
+		item_list[i] = [item, True]
+
 	# Game loop
 	while keep_party_open:
 
@@ -90,11 +99,21 @@ while keep_open:
 				elif event.key == K_DOWN:
 					mc_gyver.move_char("down")
 
+		for i in range(len(item_list)):
+			if mc_gyver.pos_x == item_list[i][0].pos_x:
+				if mc_gyver.pos_y == item_list[i][0].pos_y:
+					item_list[i][1] = False
+
 		# Display new position
 		window.blit(background,(0,0))
 		maze.show_maze(window)
 		window.blit(mc_gyver.pict, (mc_gyver.x, mc_gyver.y))
+		for i in range(len(item_list)):
+			if item_list[i][1] == True:
+				item_list[i][0].show_item(window)
 		pygame.display.flip()
 
 		if maze.maze[mc_gyver.pos_x][mc_gyver.pos_y] == "M":
 			keep_party_open = 0
+
+#prob range avec première solution for pour supp items

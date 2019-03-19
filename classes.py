@@ -1,6 +1,7 @@
 """Here are the different classes we'll used in our game"""
 
 import pygame
+import random
 
 from pygame.locals import *
 from constants import *
@@ -104,4 +105,30 @@ class Character:
 					self.pos_y += 1
 					self.y = self.pos_y * sprite_size
 
+
+class Items:
+	"""This method will randomly create items to pick-up, to win the game"""
+
+	def __init__(self, level):
+		self.x = 0
+		self.y = 0
+		self.pos_x = 0
+		self.pos_y = 0
+		self.level = level
+
+	def generate_item(self):
+		loop = 1
+		while loop:
+			row = random.randint(0, 14)
+			column = random.randint(0, 14)
+			if self.level.maze[row][column] == "0":
+				self.pos_y = row
+				self.pos_x = column
+				self.y = row * sprite_size
+				self.x = column * sprite_size
+				loop = 0
+
+	def show_item(self, window):
+		item = pygame.image.load(item_pict).convert_alpha()
+		window.blit(item, (self.x, self.y))
 
