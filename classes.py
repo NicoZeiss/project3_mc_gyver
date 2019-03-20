@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+# -*- coding: Utf-8 -*-
+
+
 """Here are the different classes we'll used in our game"""
 
 import pygame
