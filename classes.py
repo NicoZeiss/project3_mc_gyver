@@ -9,6 +9,7 @@ import random
 
 from pygame.locals import *
 from constants import *
+from functions import *
 
 class Maze:
 	"""Thanks to this class we'll create a maze, converting .txt to list"""
@@ -35,11 +36,10 @@ class Maze:
 
 	def show_maze(self, window):
 		"""With this method we'll show the maze in pygame"""
-		# We load pictures
-		start = pygame.image.load(start_pict).convert()
-		murdoc = pygame.image.load(murdoc_pict).convert_alpha()
-		wall_oversized = pygame.image.load(wall_pict).convert()
-		wall = pygame.transform.scale(wall_oversized, (45,45))
+		# We load pictures from function load_pict
+		start = load_pict(start_pict, sprite_size, sprite_size, True)
+		murdoc = load_pict(murdoc_pict, sprite_size, sprite_size, True)
+		wall = load_pict(wall_pict, sprite_size, sprite_size, False)
 
 		num_row = 0
 		# We iterate on each row, an then each sprite
@@ -64,7 +64,7 @@ class Character:
 	"""Thanks to this class we'll create our character"""
 
 	def __init__(self, pict, level):
-		self.pict = pygame.image.load(pict).convert_alpha()
+		self.pict = load_pict(mcgyver_pict, sprite_size, sprite_size, True)
 		# That's the position of mc gyver (in sprites)
 		self.pos_x = 0
 		self.pos_y = 0
@@ -133,6 +133,6 @@ class Items:
 				loop = 0
 
 	def show_item(self, window):
-		item = pygame.image.load(item_pict).convert_alpha()
+		item = load_pict(item_pict, sprite_size, sprite_size, True)
 		window.blit(item, (self.x, self.y))
 

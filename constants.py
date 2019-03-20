@@ -1,7 +1,9 @@
+import pygame
+
 """Here are the constants we'll use in our game"""
 
 #Window's constants
-sprites_per_side = 15
+sprites_per_side = 17
 sprite_size = 45
 window_size = sprites_per_side * sprite_size
 
