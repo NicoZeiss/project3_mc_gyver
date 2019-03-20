@@ -29,7 +29,7 @@ pygame.display.set_icon(icon)
 keep_open = 1
 while keep_open:
 	# We load and display start menu picture
-	start_menu = pygame.image.load(start_menu_pict).convert()
+	start_menu = load_pict(start_menu_pict, window_size, window_size, False)
 	window.blit(start_menu, (0,0))
 
 	# Refreshing
