@@ -59,7 +59,7 @@ while keep_open:
 					keep_menu_open = 0
 
 	# We launch the maze level
-	background = pygame.image.load(background_pict).convert()
+	background = load_pict(background_pict, window_size, window_size, False)
 	maze = Maze("maze.txt")
 	maze.generate_maze()
 	maze.show_maze(window)

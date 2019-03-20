@@ -66,11 +66,11 @@ class Character:
 	def __init__(self, pict, level):
 		self.pict = load_pict(mcgyver_pict, sprite_size, sprite_size, True)
 		# That's the position of mc gyver (in sprites)
-		self.pos_x = 0
-		self.pos_y = 0
+		self.pos_x = 1
+		self.pos_y = 1
 		# Position in pixels
-		self.x = 0
-		self.y = 0
+		self.x = sprite_size
+		self.y = sprite_size
 		# That's the level where the character is
 		self.level = level
 
