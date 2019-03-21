@@ -67,13 +67,12 @@ while keep_open:
 	# We launch our character
 	mc_gyver = Character(mcgyver_pict, maze)
 
-	# Launch items in a dic
+	# Launch items in a list and dic
 	item_list = ["needle", "tube", "ether"]
 	item_dic = {}
 	for i in range(len(item_list)):
 		# We create an object from class Items for each item in the list
-		item_pict = "pictures/{}.png".format(item_list[i])
-		item_list[i] = Items(item_pict, maze)
+		item_list[i] = Items(item_list[i], maze)
 		item_list[i].generate_item()
 		item_list[i].show_item(window)
 		item_dic[i] = [item_list[i], True]
@@ -111,28 +110,26 @@ while keep_open:
 				if mc_gyver.pos_y == item_dic[i][0].pos_y:
 					item_dic[i][1] = False
 
-		# Raise meter count
-		count = 0
-		for i in range(len(item_dic)):
-			if item_dic[i][1] == False:
-				count += 1
-		meter_text = "{} / {} items collected".format(count, len(item_dic))
+		# # Raise meter count
+		# count = 0
+		# for i in range(len(item_dic)):
+		# 	if item_dic[i][1] == False:
+		# 		count += 1
+		# meter_text = "{} / {} items collected".format(count, len(item_dic))
 
 		# Display new position
 		window.blit(background,(0,0))
 		maze.show_maze(window)
 		window.blit(mc_gyver.pict, (mc_gyver.x, mc_gyver.y))
 
-		# Display meter
-		font = pygame.font.Font(None, 30)
-		meter = font.render(meter_text, 1, (255,255,255))
-		window.blit(meter, (470,10))
-
-		# Show item not yet collected
+		# Show item not yet collected and display on the top items collected
 		for i in range(len(item_dic)):
 			if item_dic[i][1] == True:
 				item_dic[i][0].show_item(window)
-
+			else:
+				x = 5 * sprite_size + i * sprite_size
+				item_dic[i][0].item_check(window, x)
+				
 		# Refreshing window
 		pygame.display.flip()
 

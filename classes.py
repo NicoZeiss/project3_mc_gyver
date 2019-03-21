@@ -114,9 +114,13 @@ class Items:
 	"""This method will randomly create items to pick-up, to win the game"""
 
 	def __init__(self, pict, level):
-		self.pict = load_pict(pict, sprite_size, sprite_size, True)
+		self.pict = load_pict("pictures/{}.png".format(pict), sprite_size, sprite_size, True)
+		# Picture for check item is smaller
+		self.pict_check = load_pict("pictures/{}.png".format(pict), 30, 30, True)
+		# Item position in pixels
 		self.x = 0
 		self.y = 0
+		# Item position in spites
 		self.pos_x = 0
 		self.pos_y = 0
 		self.level = level
@@ -135,4 +139,7 @@ class Items:
 
 	def show_item(self, window):
 		window.blit(self.pict, (self.x, self.y))
+
+	def item_check(self, window, x):
+		window.blit(self.pict_check, (x, 8))
 

@@ -11,7 +11,7 @@ window_title = "MacGyver Maze"
 image_icone = "pictures/mcgyver.png"
 
 #List of pictures we'll use in our game
-background_pict = "pictures/background.png"
+background_pict = "pictures/background.jpg"
 mcgyver_pict = "pictures/mcgyver.png"
 murdoc_pict = "pictures/murdoc.png"
 wall_pict = "pictures/wall.png"
