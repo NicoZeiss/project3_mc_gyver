@@ -10,6 +10,8 @@ from constants import *
 """Here, you will find some functions we will use in main.py"""
 
 def win_message(window):
+	"""Display the win message when mcgyver reach murdoc with all items"""
+
 	font = pygame.font.Font(None, 50)
 	win_mess = font.render("YOU WIN !!!", 1, (255,255,255))
 	window.blit(win_mess, (200,200))
@@ -27,4 +29,5 @@ def load_pict(pict, x, y, alpha):
 		object_pict = pygame.image.load(pict).convert()
 		resized_pict = pygame.transform.scale(object_pict, (x,y))
 	return resized_pict
+
 

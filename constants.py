@@ -17,6 +17,7 @@ murdoc_pict = "pictures/murdoc.png"
 wall_pict = "pictures/wall.png"
 start_pict = "pictures/start.png"
 start_menu_pict = "pictures/start_menu.png"
+# Items pict
 ether_pict = "pictures/ether.png"
 needle_pict = "pictures/needle.png"
 tube_pict = "pictures/tube.png"

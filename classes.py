@@ -64,7 +64,7 @@ class Character:
 	"""Thanks to this class we'll create our character"""
 
 	def __init__(self, pict, level):
-		self.pict = load_pict(mcgyver_pict, sprite_size, sprite_size, True)
+		self.pict = load_pict(pict, sprite_size, sprite_size, True)
 		# That's the position of mc gyver (in sprites)
 		self.pos_x = 1
 		self.pos_y = 1
@@ -113,7 +113,8 @@ class Character:
 class Items:
 	"""This method will randomly create items to pick-up, to win the game"""
 
-	def __init__(self, level):
+	def __init__(self, pict, level):
+		self.pict = load_pict(pict, sprite_size, sprite_size, True)
 		self.x = 0
 		self.y = 0
 		self.pos_x = 0
@@ -133,6 +134,5 @@ class Items:
 				loop = 0
 
 	def show_item(self, window):
-		item = load_pict(item_pict, sprite_size, sprite_size, True)
-		window.blit(item, (self.x, self.y))
+		window.blit(self.pict, (self.x, self.y))
 
