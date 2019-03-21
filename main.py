@@ -69,7 +69,7 @@ while keep_open:
 
 	# Launch items in a dic
 	item_list = {}
-	for i in range(4):
+	for i in range(3):
 		item = Items(maze)
 		item.generate_item()
 		item.show_item(window)
