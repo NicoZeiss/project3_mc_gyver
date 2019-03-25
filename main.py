@@ -110,12 +110,12 @@ while keep_open:
 				if mc_gyver.pos_y == item_dic[i][0].pos_y:
 					item_dic[i][1] = False
 
-		# # Raise meter count
-		# count = 0
-		# for i in range(len(item_dic)):
-		# 	if item_dic[i][1] == False:
-		# 		count += 1
-		# meter_text = "{} / {} items collected".format(count, len(item_dic))
+		# Raise meter count
+		count = 0
+		for i in range(len(item_dic)):
+			if item_dic[i][1] == False:
+				count += 1
+		meter_text = "{} / {} items collected:".format(count, len(item_dic))
 
 		# Display new position
 		window.blit(background,(0,0))
@@ -135,17 +135,25 @@ while keep_open:
 
 		# Win conditions and win message
 		if maze.maze[mc_gyver.pos_x][mc_gyver.pos_y] == "M":
+			# Check if all items are collected, to win
 			if count == len(item_list):
 				keep_party_open = 0
-				win_mess = win_message(window)
-				pygame.display.flip()
-				# Keep win screen open
-				while win_loop:
+				win_mess = win_message(window, True)
+			# If not, player loses
+			else:
+				keep_party_open = 0
+				win_mess = win_message(window, False)
+			pygame.display.flip()
+			# Keep win screen open
+			while win_loop:
 					pygame.time.Clock().tick(30)
 					for event in pygame.event.get():
 						if event.type == KEYDOWN:
-							if event.key == K_SPACE:
+							if event.key == K_SPACE or event.key == K_ESCAPE:
 								win_loop = 0
+						elif event.type == QUIT:
+							win_loop = 0
+							keep_open = 0
 			
 				
 

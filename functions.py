@@ -9,12 +9,18 @@ from constants import *
 
 """Here, you will find some functions we will use in main.py"""
 
-def win_message(window):
+def win_message(window, check):
 	"""Display the win message when mcgyver reach murdoc with all items"""
-
-	font = pygame.font.Font(None, 50)
-	win_mess = font.render("YOU WIN !!!", 1, (255,255,255))
-	window.blit(win_mess, (200,200))
+	# Player win if he has collected all items
+	if check == True:
+		font = pygame.font.Font(None, 50)
+		win_mess = font.render("YOU WIN !!!", 1, (255,255,255))
+		window.blit(win_mess, (280,365))
+	# If not, he loses
+	elif check == False:
+		font = pygame.font.Font(None, 50)
+		win_mess = font.render("Ops, Murdoc just killed you...", 1, (255,255,255))
+		window.blit(win_mess, (140,365))
 
 def load_pict(pict, x, y, alpha):
 	"""This function will load pict and convert them to the right size. 
