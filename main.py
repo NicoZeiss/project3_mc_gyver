@@ -115,12 +115,16 @@ while keep_open:
 		for i in range(len(item_dic)):
 			if item_dic[i][1] == False:
 				count += 1
+		# Display a meter to let player know how many items are remaining
 		meter_text = "{} / {} items collected:".format(count, len(item_dic))
+		font = pygame.font.Font(None, 30)
+		meter_display = font.render(meter_text, 1, (255,255,255))
 
 		# Display new position
 		window.blit(background,(0,0))
 		maze.show_maze(window)
 		window.blit(mc_gyver.pict, (mc_gyver.x, mc_gyver.y))
+		window.blit(meter_display, (10,12))
 
 		# Show item not yet collected and display on the top items collected
 		for i in range(len(item_dic)):
