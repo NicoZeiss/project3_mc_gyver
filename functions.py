@@ -15,12 +15,12 @@ def win_message(window, check):
 	if check == True:
 		font = pygame.font.Font(None, 50)
 		win_mess = font.render("YOU WIN !!!", 1, (255,255,255))
-		window.blit(win_mess, (280,365))
+		return win_mess
 	# If not, he loses
 	elif check == False:
 		font = pygame.font.Font(None, 50)
 		win_mess = font.render("Ops, Murdoc just killed you...", 1, (255,255,255))
-		window.blit(win_mess, (140,365))
+		return win_mess
 
 def load_pict(pict, x, y, alpha):
 	"""This function will load pict and convert them to the right size. 

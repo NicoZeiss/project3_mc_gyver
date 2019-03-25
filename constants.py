@@ -1,5 +1,3 @@
-import pygame
-
 """Here are the constants we'll use in our game"""
 
 #Window's constants
