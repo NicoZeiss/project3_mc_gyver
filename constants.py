@@ -6,7 +6,6 @@ sprite_size = 45
 window_size = sprites_per_side * sprite_size
 
 window_title = "MacGyver Maze"
-image_icone = "pictures/mcgyver.png"
 
 #List of pictures we'll use in our game
 background_pict = "pictures/background.jpg"
