@@ -11,13 +11,14 @@ Don't forget to pick every item you will find
 import pygame
 from pygame.locals import *
 
-from functions import win_message, load_pict
+from functions import win_message, load_pict, main_loop
 from classes import Maze, Character, Items
 from constants import mcgyver_pict, start_menu_pict, background_pict
 from constants import window_title, window_size, sprite_size
 
-# We launch the game, and the main window
 def main():
+    """Here is the main function, which allows to run the game"""
+
     pygame.init()
     window = pygame.display.set_mode((window_size, window_size))
     # Window title
@@ -29,12 +30,8 @@ def main():
     # Main loop
     keep_open = 1
     while keep_open:
-        # We load and display start menu picture
-        start_menu = load_pict(start_menu_pict, window_size, window_size, False)
-        window.blit(start_menu, (0, 0))
-
-        # Refreshing
-        pygame.display.flip()
+        #We launch main_loop function
+        main_loop(window)
 
         # Start menu loop
         keep_menu_open = 1
