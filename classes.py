@@ -9,7 +9,7 @@ Here are the different classes we'll used in our game
 import random
 
 from constants import sprites_per_side, sprite_size, murdoc_pict, wall_pict, start_pict
-from functions import load_pict
+from design import load_pict
 
 class Maze(object):
     """Thanks to this class we'll create a maze, converting .txt to list"""
