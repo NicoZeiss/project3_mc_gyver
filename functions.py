@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*-
 
+"""All functions we need to run the game: generate items, maze, char -> display them"""
+
 import pygame
 from pygame.locals import *
-from constants import *
-from classes import *
-from design import *
+from constants import sprite_size, window_size, background_pict, mcgyver_pict, start_menu_pict
+from classes import Maze, Items, Character
+from design import win_message
 
 def start_menu(window):
     """ We load and display start menu picture"""
@@ -16,7 +18,7 @@ def start_menu(window):
     # Refreshing
     pygame.display.flip()
 
-def launch_party(window):
+def launch_party():
     """ Launching background, maze and mac gyver"""
 
     background = pygame.image.load(background_pict).convert()
@@ -36,7 +38,7 @@ def display_new_pos(window, background, maze, mc_gyver):
     maze.show_maze(window)
     window.blit(mc_gyver.pict, (mc_gyver.x_pix, mc_gyver.y_pix))
 
-def generate_items(window, maze):
+def generate_items(maze):
     """We generate randomly items in the maze, and save themn in a dic"""
 
     item_list = ["needle", "tube", "ether"]
@@ -52,12 +54,12 @@ def show_items(window, item_dic, mc_gyver):
     """Check if mac gyver collect an object, and show it if not"""
 
     # Check item
-    for i, item in enumerate(item_dic):
+    for i in item_dic:
         if mc_gyver.pos_x == item_dic[i][0].pos_x:
             if mc_gyver.pos_y == item_dic[i][0].pos_y:
                 item_dic[i][1] = False
     # If mc gyver collect item we del it from maze and show it in inventory
-    for i, item in enumerate(item_dic):
+    for i in item_dic:
         if item_dic[i][1] is True:
             item_dic[i][0].show_item(window)
         else:
@@ -68,13 +70,12 @@ def check_win(window, mc_gyver, maze, count):
     """If mac gyver has collected all items and reach murloc, player win"""
     if maze.maze[mc_gyver.pos_x][mc_gyver.pos_y] == "M":
         if count == 3:
-            keep_party_open = 0
             win_mess = win_message(window, True)
             window.blit(win_mess, (280, 365))
         # If not, player loses
         else:
-            keep_party_open = 0
             win_mess = win_message(window, False)
             window.blit(win_mess, (140, 365))
         return True
-
+    else:
+        return False

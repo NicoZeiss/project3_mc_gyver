@@ -6,7 +6,6 @@ Functions used in main.py to display messages and pictures
 """
 
 import pygame
-from constants import *
 from pygame.locals import *
 
 
@@ -41,8 +40,8 @@ def load_pict(pict, coord_x, coord_y, alpha):
 def display_meter(window, item_dic):
     """We display a meter to count how many items are collected"""
     count = 0
-    for i, item in enumerate(item_dic):
-        if item_dic[i][1] is False:
+    for item in item_dic:
+        if item_dic[item][1] is False:
             count += 1
     # Display a meter to let player know how many items are remaining
     meter_text = "{} / {} items collected:".format(count, len(item_dic))
